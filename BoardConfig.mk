@@ -23,6 +23,7 @@ BOARD_KERNEL_PAGESIZE := 4096
 TARGET_KERNEL_SOURCE := kernel/samsung/msm7x27a
 TARGET_KERNEL_CONFIG := cyanogenmod/jena_defconfig
 TARGET_BOOTLOADER_BOARD_NAME := jena
+TARGET_GRALLOC_USES_ASHMEM := true
 
 ## Platform
 TARGET_ARCH := arm
@@ -42,8 +43,8 @@ TARGET_GLOBAL_CFLAGS += -mtune=cortex-a5 -mfpu=neon-vfpv4 -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a5 -mfpu=neon-vfpv4 -mfloat-abi=softfp
 
 ## FM Radio
-BOARD_HAVE_QCOM_MR1_FM := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_MR1_FM
+BOARD_HAVE_QCOM_FM := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED
 
 ## Memory
 TARGET_USES_ION := true
@@ -114,8 +115,8 @@ BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0"
 BOARD_RIL_CLASS := ../../../device/samsung/jena/ril/
 
 ## Vold
-BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 24
+TARGET_USE_CUSTOM_SECOND_LUN_NUM := 1
 
 ## UMS
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
@@ -147,6 +148,7 @@ BOARD_HAS_DOWNLOAD_MODE := true
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_FLASH_BLOCK_SIZE := 131072
+RECOVERY_FSTAB_VERSION := 2
 
 ## Filesystem
 BOARD_DATA_DEVICE := /dev/block/mmcblk0p18

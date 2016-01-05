@@ -58,7 +58,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     qcom.fmradio \
     libqcomfm_jni \
-    FM2
+    FM2 \
+    FMRecord
+
 
 ## Charger
 PRODUCT_PACKAGES += \
@@ -187,9 +189,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=massstorage,adb \
     ro.vold.umsdirtyratio=50 \
     persist.sys.vold.switchablepair=sdcard0,sdcard1
+    persist.fuse_sdcard=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.webview.provider=classic
+#   persist.webview.provider=classic
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.cwm.enable_key_repeat=true
