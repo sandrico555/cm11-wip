@@ -33,10 +33,6 @@ PRODUCT_PACKAGES += \
     setup_fs \
     com.android.future.usb.accessory
 
-# Webkit
-PRODUCT_PACKAGES += \
-    libwebcore
-
 ## Audio
 PRODUCT_PACKAGES += \
     audio.primary.msm7x27a \
