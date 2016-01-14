@@ -158,7 +158,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.gr.numframebuffers=3 \
     debug.egl.recordable.rgba8888=1 \
-    debug.composition.type=dyn \
+    debug.composition.type=gpu \
+    debug.sf.hw=1
     debug.hwc.dynThreshold=1.9 \
     ro.bq.gpu_to_cpu_unsupported=1 \
     ro.max.fling_velocity=4000 \
@@ -180,10 +181,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=/system/lib/libqc-opt.so
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=massstorage,adb \
+    persist.sys.usb.config=mtp,adb \
     ro.vold.umsdirtyratio=50 \
     persist.sys.vold.switchablepair=sdcard0,sdcard1
-    persist.fuse_sdcard=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
 #   persist.webview.provider=classic

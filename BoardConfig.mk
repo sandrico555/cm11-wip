@@ -20,10 +20,9 @@ TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 BOARD_KERNEL_BASE := 0x00200000
 BOARD_KERNEL_PAGESIZE := 4096
-TARGET_KERNEL_SOURCE := kernel/samsung/msm7x27a
+TARGET_KERNEL_SOURCE := kernel/samsung/jena
 TARGET_KERNEL_CONFIG := cyanogenmod/jena_defconfig
 TARGET_BOOTLOADER_BOARD_NAME := jena
-TARGET_GRALLOC_USES_ASHMEM := true
 
 ## Platform
 TARGET_ARCH := arm
@@ -38,9 +37,15 @@ TARGET_SPECIFIC_HEADER_PATH := device/samsung/jena/include
 
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
+TARGET_GRALLOC_USES_ASHMEM := true
+ARCH_ARM_HIGH_OPTIMIZATION := true
+TARGET_CORTEX_CACHE_LINE_32 := true
 
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a5 -mfpu=neon-vfpv4 -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a5 -mfpu=neon-vfpv4 -mfloat-abi=softfp
+
+# Legacy Sensor Service
+BOARD_USE_LEGACY_SENSORS_FUSION := true
 
 ## FM Radio
 BOARD_HAVE_QCOM_FM := true
@@ -86,9 +91,6 @@ BOARD_USES_QCOM_LIBRPC := true
 BOARD_USES_QCOM_GPS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := msm7x27a
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
-
-## Webkit
-TARGET_FORCE_CPU_UPLOAD := true
 
 ## Bluetooth
 BOARD_HAVE_BLUETOOTH := true
