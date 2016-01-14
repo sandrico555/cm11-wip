@@ -207,8 +207,9 @@ PRODUCT_PACKAGES += \
     libnfc \
     libnfc_jni \
     Nfc \
+    com.android.nfc_extras \
     Tag
-    com.android.nfc_extras
+    
 
 ## NFC permissions
 PRODUCT_COPY_FILES += \
