@@ -156,6 +156,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bluetooth.ftp=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.nfc.enabled=true
+
+PRODUCT_PROPERTY_OVERRIDES += \
     debug.gr.numframebuffers=3 \
     debug.egl.recordable.rgba8888=1 \
     debug.composition.type=dyn \
@@ -180,10 +183,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=/system/lib/libqc-opt.so
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=massstorage,adb \
+    persist.sys.usb.config=mtp,adb \
     ro.vold.umsdirtyratio=50 \
     persist.sys.vold.switchablepair=sdcard0,sdcard1
-    persist.fuse_sdcard=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
 #   persist.webview.provider=classic
@@ -206,10 +208,13 @@ PRODUCT_PACKAGES += \
     libnfc_jni \
     Nfc \
     Tag
+    com.android.nfc_extras
 
 ## NFC permissions
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
+     frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
+    frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
+    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
 
 ## Splash screen
 PRODUCT_COPY_FILES += \
