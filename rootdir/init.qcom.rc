@@ -7,8 +7,12 @@ on init
     write /proc/sys/kernel/randomize_va_space 1
 
     ## Setup storage
+<<<<<<< HEAD
     mkdir /storage 0000 system system
     mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
+=======
+    mkdir /storage/sdcard0 0700 media_rw media_rw
+>>>>>>> 6fe172cbbeb30839627c6cd0940a15421760e202
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
 
     mkdir /storage/sdcard0 0700 root root
@@ -19,7 +23,11 @@ on init
     export SECONDARY_STORAGE /storage/sdcard1
 
     ## Backwards compability
+<<<<<<< HEAD
     symlink /storage/sdcard0 /mnt/media_rw/sdcard0
+=======
+    symlink /storage/sdcard0 /mnt/storage_internal
+>>>>>>> 6fe172cbbeb30839627c6cd0940a15421760e202
     symlink /storage/sdcard0 /storage_internal
     symlink /storage/sdcard1 /mnt/sdcard
     symlink /storage/sdcard1 /sdcard
