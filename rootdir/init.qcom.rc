@@ -7,25 +7,24 @@ on init
     write /proc/sys/kernel/randomize_va_space 1
 
     ## Setup storage
-    mkdir /mnt/shell/emulated 0700 shell shell
-    mkdir /storage/emulated 0555 root root
+    mkdir /storage 0000 system system
+    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
-    mkdir /mnt/media_rw/usbdisk0 0700 media_rw media_rw
-    mkdir /storage/sdcard1 0700 root root
-    mkdir /storage/usbdisk0 0700 root root
 
-    export EXTERNAL_STORAGE /storage/emulated/legacy
-    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
-    export EMULATED_STORAGE_TARGET /storage/emulated
+    mkdir /storage/sdcard0 0700 root root
+    mkdir /storage/sdcard1 0700 root root
+    mkdir /storage/usbdisk 0700 root root
+
+    export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
-    
-    # Support legacy paths
-    symlink /storage/emulated/legacy /sdcard
-    symlink /storage/emulated/legacy /mnt/sdcard
-    symlink /storage/emulated/legacy /storage/sdcard0
-    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
-    symlink /storage/sdcard1 /mnt/sdcard2
-    symlink /storage/sdcard1 /sdcard2
+
+    ## Backwards compability
+    symlink /storage/sdcard0 /mnt/media_rw/sdcard0
+    symlink /storage/sdcard0 /storage_internal
+    symlink /storage/sdcard1 /mnt/sdcard
+    symlink /storage/sdcard1 /sdcard
+    symlink /storage/usbdisk /mnt/usbdisk
+    symlink /storage/usbdisk /usbdisk
 
 on fs
     ## Mount partitions
@@ -33,12 +32,6 @@ on fs
 
     ## zRam
     swapon_all /fstab.qcom
- 
-setprop ro.crypto.fuse_sdcard true
-
-n post-fs-data
-    mkdir /data/media 0770 media_rw media_rw
-    chown media_rw media_rw /data/media
 
 on boot
     setenforce 0
@@ -60,9 +53,7 @@ on boot
     chmod 0660 /dev/ttyHS0
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
-    
-    chown root root /mnt/media_rw
-    
+
     ## Setup Wi-Fi
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
@@ -216,8 +207,9 @@ service get_macaddrs /system/bin/get_macaddrs
 on property:init.svc.ril-daemon=running
     start get_macaddrs
 
-service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
+service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /storage/sdcard0 /storage/sdcard0
     class late_start
+    disabled
 
 service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
     class late_start
