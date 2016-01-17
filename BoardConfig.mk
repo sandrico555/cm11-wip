@@ -84,11 +84,10 @@ BOARD_EGL_CFG := device/samsung/jena/prebuilt/lib/egl/egl.cfg
 TARGET_USES_QCOM_BSP := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
 
-## Add h/w acceleration in browser
-WITH_JIT := true
-ENABLE_JSC_JIT := true
-JS_ENGINE := v8
-HTTP := chrome
+## Webkit
+ENABLE_WEBGL := true
+PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
+TARGET_FORCE_CPU_UPLOAD := true
 
 ## GPS
 BOARD_USES_QCOM_LIBRPC := true
@@ -116,7 +115,6 @@ WIFI_DRIVER_MODULE_ARG := "suspend_mode=3 wow_mode=2 ath6kl_p2p=1 recovery_enabl
 
 ## RIL
 BOARD_USES_LEGACY_RIL := true
-BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0"
 BOARD_RIL_CLASS := ../../../device/samsung/jena/ril/
 
 ## Vold
