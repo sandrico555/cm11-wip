@@ -208,13 +208,8 @@ PRODUCT_PACKAGES += \
     libnfc_jni \
     Nfc \
     com.android.nfc_extras \
-<<<<<<< HEAD
     Tag \
     nfc.jena
-=======
-    Tag
-    
->>>>>>> 61404bbaeb27f16f3fc2494a6d7facf4f32faddc
 
 ## NFC permissions
 PRODUCT_COPY_FILES += \
