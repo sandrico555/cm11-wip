@@ -7,8 +7,14 @@ on init
     write /proc/sys/kernel/randomize_va_space 1
 
     ## Setup storage
+<<<<<<< HEAD
     mkdir /storage 0550 system sdcard_r
     mkdir /storage/sdcard0 0700 system system
+=======
+    mkdir /storage 0000 system system
+    mkdir /storage/sdcard0 0700 system system
+    mkdir /mnt/sdcard0 0700 media_rw media_rw
+>>>>>>> 61404bbaeb27f16f3fc2494a6d7facf4f32faddc
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
     
     mkdir /storage/sdcard0 0700 root root

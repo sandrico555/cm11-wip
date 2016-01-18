@@ -10,7 +10,11 @@
 /dev/block/mmcblk0p17     /cache       	ext4     nosuid,nodev,barrier=1                             wait,check
 
 # vold managed volumes
+<<<<<<< HEAD
 /dev/block/mmcblk0p23       /storage/sdcard0      vfat      defaults   wait,lun=/sys/devices/platform/msm_hsusb/gadget/lun0/file
+=======
+/dev/block/mmcblk0p23       /storage/sdcard0      vfat      defaults   defaults
+>>>>>>> 61404bbaeb27f16f3fc2494a6d7facf4f32faddc
 /devices/platform/msm_sdcc.1/mmc_host   auto     auto     defaults         voldmanaged=sdcard1:auto,noemulatedsd
 /devices/platform/msm_hsusb_host.0 	auto     auto     defaults         voldmanaged=usbdisk:auto
 
